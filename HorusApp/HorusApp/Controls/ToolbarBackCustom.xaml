@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HorusApp.Controls.ToolbarBackCustom">
+    <ContentView.Content>
+        <Frame HasShadow="False" CornerRadius="0" Padding="15" HeightRequest="35" BackgroundColor="Transparent" >
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand">
+                <Image Source="back_b.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ReturnToPreviousPageCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

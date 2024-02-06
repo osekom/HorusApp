@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.8.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2622" />
+    <PackageReference Include="Refit" Version="5.2.4" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
+    <PackageReference Include="Prism.Plugin.Popups" Version="8.0.76" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="4.1.6" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Fody" Version="6.8.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Utils\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Services\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Settings\" />
+    <Folder Include="Resources\" />
+    <Folder Include="Converters\" />
+    <Folder Include="Behaviors\" />
+    <Folder Include="Abstractions\" />
+    <Folder Include="LocalData\" />
+    <Folder Include="Services\Session\" />
+    <Folder Include="ViewModels\Home\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\Session\" />
+    <Folder Include="ViewModels\Session\" />
+    <Folder Include="Views\Popups\" />
+    <Folder Include="ViewModels\Popups\" />
+    <Folder Include="Models\API\" />
+    <Folder Include="Models\Adapter\" />
+    <Folder Include="Services\Challenges\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Settings\Develop.json" />
+    <None Remove="Settings\Demo.json" />
+    <None Remove="Settings\Production.json" />
+    <None Remove="Settings\Testing.json" />
+    <None Remove="Models\API\" />
+    <None Remove="Models\Adapter\" />
+    <None Remove="Services\Challenges\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Settings\Develop.json" />
+    <EmbeddedResource Include="Settings\Demo.json" />
+    <EmbeddedResource Include="Settings\Production.json" />
+    <EmbeddedResource Include="Settings\Testing.json" />
+  </ItemGroup>
+</Project>

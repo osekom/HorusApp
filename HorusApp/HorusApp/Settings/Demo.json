@@ -1,0 +1,8 @@
+﻿{
+  "BaseUrl": "https://horuschallenges.azurewebsites.net/api",
+  "UrlToken": "",
+  "BaseUrlImage": "",
+  "UserToken": "",
+  "PassToken": "",
+  "NameDB": "dbalm.db3"
+}

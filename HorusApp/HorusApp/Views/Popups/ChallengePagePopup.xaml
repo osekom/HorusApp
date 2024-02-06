@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                 xmlns:popups="clr-namespace:HorusApp.ViewModels.Popups"
+                 x:DataType="popups:ChallengePagePopupViewModel"
+                 x:Class="HorusApp.Views.Popups.ChallengePagePopup">
+    <StackLayout HorizontalOptions="FillAndExpand" 
+                VerticalOptions="EndAndExpand"
+                Margin="0,0,0,0"
+                BackgroundColor="Transparent">
+        <StackLayout>
+            <yummy:PancakeView CornerRadius="25,25,0,0"
+                   BackgroundColor="White"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="EndAndExpand"
+                   Padding="0">
+                    <StackLayout Margin="25,20,25,40">
+                        <StackLayout Orientation="Horizontal">
+
+                            <Label TextColor="Black"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="StartAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding title}"/>
+                                        <Span Text=" - "/>
+                                        <Span Text="{Binding PercetTask}" TextColor="#F49390"/>
+                                        <Span Text="%" TextColor="#F49390"/>
+                                    </FormattedString>
+
+                                </Label.FormattedText>
+
+                            </Label>
+                            <Label Text="Cerrar"
+                                   FontSize="12"
+                                   FontAttributes="Bold"
+                                   TextColor="#F49390"
+                                   HorizontalOptions="End">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CancelCommand}"/>
+
+                                </Label.GestureRecognizers>
+
+                            </Label>
+
+                        </StackLayout>
+
+                        <BoxView HeightRequest="2" HorizontalOptions="FillAndExpand" BackgroundColor="#A1A1A1"/>
+
+                        <Label Text="{Binding description}"
+                               TextColor="Black"
+                               FontSize="12"
+                               FontAttributes="None"/>
+
+                    </StackLayout>
+            </yummy:PancakeView>
+        </StackLayout>
+    </StackLayout>
+</popup:PopupPage>

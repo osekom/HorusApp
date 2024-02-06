@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HorusApp.Views.Session.LogInPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="False"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:controls="clr-namespace:HorusApp.Controls"
+             xmlns:session="clr-namespace:HorusApp.ViewModels.Session"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:DataType="session:LogInPageViewModel" >
+    <ContentPage.Content>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="230"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- HEADER -->
+
+                <yummy:PancakeView CornerRadius="0,0,25,25"
+                                   Grid.Row="0"
+                                   BackgroundColor="Transparent"
+                                   HorizontalOptions="FillAndExpand"
+                                   Padding="0"
+                                   Grid.RowSpan="2">
+                    <Image Source="background.jpg"
+                           Aspect="AspectFill"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="FillAndExpand"/>
+                    <yummy:PancakeView.Border>
+                        <yummy:Border Color="Transparent" Thickness="0" />
+                    </yummy:PancakeView.Border>
+                </yummy:PancakeView>
+
+                <!-- TITULO -->
+                <StackLayout Grid.Row="1"
+                             Margin="50,0,0,0"
+                             Spacing="1">
+                    <Label FontSize="22"
+                           TextColor="#ffff"
+                           FontFamily="Regular">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Bienvenido a &#10;"
+                                      FontSize="22"/>
+                                <Span Text="Horus"
+                                      FontSize="55"
+                                      FontAttributes="Bold"/>
+
+                            </FormattedString>
+
+                        </Label.FormattedText>
+
+                    </Label>
+
+                </StackLayout>
+
+                <!-- BODY -->
+
+                <StackLayout Margin="30,30,30,0"
+                             Grid.Row="2"
+                             Spacing="10">
+
+                    <!--email-->
+                    <StackLayout Spacing="1">
+                        <Label Text="Email"
+                               TextColor="#828282"
+                               FontSize="12"
+                               Margin="10,0,0,0"/>
+
+                        <Frame HasShadow="False"
+                               BackgroundColor="#f7f6f6"
+                               CornerRadius="10"
+                               Padding="5"
+                               HorizontalOptions="FillAndExpand">
+                            <controls:EntryControl BorderColor="Transparent"
+                                                   TextColor="#1A1A1A"
+                                                   Keyboard="Email"
+                                                   BackgroundColor="#f7f6f6"
+                                                   FontSize="16"
+                                                   Text="{Binding LoginAdapterData.email, Mode=TwoWay}">
+                                <Entry.Behaviors>
+                                    <xct:EmailValidationBehavior DecorationFlags="Trim"/>
+                                </Entry.Behaviors>
+
+                            </controls:EntryControl>
+                        </Frame>
+                    </StackLayout>
+                    
+                    <!--Pass-->
+                    <StackLayout Spacing="1">
+                        <Label Text="Contraseña"
+                               TextColor="#828282"
+                               FontSize="12"
+                               Margin="10,0,0,0"/>
+
+                        <Frame HasShadow="False"
+                               BackgroundColor="#f7f6f6"
+                               CornerRadius="10"
+                               Padding="5"
+                               HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="FillAndExpand">
+                                <controls:EntryControl BorderColor="Transparent"
+                                                       TextColor="#1A1A1A"
+                                                       BackgroundColor="#f7f6f6"
+                                                       HorizontalOptions="FillAndExpand"
+                                                       FontSize="16"
+                                                       Text="{Binding LoginAdapterData.Password, Mode=TwoWay}"
+                                                       IsPassword="{Binding LoginAdapterData.isPass, Mode=TwoWay}"/>
+                                <Image Source="{Binding LoginAdapterData.ImageButton, Mode=TwoWay}"
+                                       HorizontalOptions="End">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ShowHidePassCommand}"/>
+
+                                    </Image.GestureRecognizers>
+
+                                </Image>
+
+                            </StackLayout>
+                            
+                        </Frame>
+                    </StackLayout>
+
+                    <Label Text="Olvidates tu contraseña"
+                               TextColor="#828282"
+                               FontSize="12"
+                               Margin="10,0,0,30">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ForgotPassCommand}"/>
+
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <Button Background="#F49390"
+                            Text="Login"
+                            TextColor="#FFFFFF"
+                            CornerRadius="10"
+                            Command="{Binding LogInCommand}"/>
+
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0,20,0,0"
+                                 Spacing="30">
+
+                        <Button ImageSource="instagram_g.png"
+                                BackgroundColor="#f7f6f6"
+                                CornerRadius="25"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                HorizontalOptions="EndAndExpand"
+                                Command="{Binding InstagramCommand}"/>
+
+                        <Button ImageSource="facebook_g.png"
+                                BackgroundColor="#f7f6f6"
+                                CornerRadius="25"
+                                HeightRequest="50"
+                                WidthRequest="50"
+                                HorizontalOptions="StartAndExpand"
+                                Command="{Binding FacebookCommand}"/>
+
+                    </StackLayout>
+
+                </StackLayout>
+
+                <!-- FOOTER -->
+                <StackLayout Grid.Row="2"
+                             VerticalOptions="EndAndExpand"
+                             Margin="30,0,30,0">
+
+                    <BoxView HorizontalOptions="FillAndExpand"
+                             HeightRequest="3"
+                             BackgroundColor="#f7f5f6"/>
+
+                    <Button Margin="0,0,0,30"
+                            Background="#f7f6f6"
+                            Text="Registrarme"
+                            TextColor="#828282"
+                            CornerRadius="10"
+                            Command="{Binding RegistrarmeCommand}"/>
+
+                </StackLayout>
+
+
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

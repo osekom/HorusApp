@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="HorusApp.Views.Home.ChallengesPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="True"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:controls="clr-namespace:HorusApp.Controls"
+             x:Name="ChallengesPageView">
+    <ContentPage.Content>
+            <StackLayout>
+                <controls:ToolbarBackCustom/>
+                <StackLayout Margin="20,0,20,10">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Retos"
+                               FontSize="24"
+                               FontAttributes="Bold"
+                               TextColor="#1A1A1A"
+                               HorizontalOptions="StartAndExpand"/>
+
+                        <Label FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="#1A1A1A"
+                               HorizontalOptions="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding CompletesChallenges}" TextColor="#F49390"/>
+                                    <Span Text="/"/>
+                                    <Span Text="{Binding CountsChallenges}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+
+                    </StackLayout>
+
+                    <!--Items retos-->
+                    <CollectionView ItemsSource="{Binding challengesAdapter}"
+                                    HorizontalOptions="FillAndExpand">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Margin="0,5,0,5">
+                                    <Frame CornerRadius="15"
+                                           Padding="15"
+                                           HasShadow="False"
+                                           Margin="0,0,0,0"
+                                           HorizontalOptions="FillAndExpand"
+                                           BackgroundColor="{Binding ColorChallenge}"
+                                           xct:ShadowEffect.Color="#F000000"
+                                           xct:ShadowEffect.OffsetY="1"
+                                           xct:ShadowEffect.Radius="15">
+                                        <StackLayout Spacing="1">
+
+                                            <!--Titulo-->
+                                            <StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding title}"
+                                                   TextColor="{Binding TitleColor}"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                       HorizontalOptions="StartAndExpand"/>
+                                                <Image Source="{Binding ArrowChallenge}">
+
+                                                </Image>
+
+                                            </StackLayout>
+
+                                            <!--description-->
+                                            <Label Text="{Binding description}"
+                                                   TextColor="{Binding SubTitleColor}"
+                                                   FontSize="12"
+                                                   FontAttributes="None"/>
+
+                                            <!--Estado de progreso-->
+                                            <StackLayout Orientation="Horizontal"
+                                                         Margin="0,5,0,0">
+
+                                                <!--Contador de tareas-->
+                                                <Label FontSize="12"
+                                                       FontAttributes="None"
+                                                       TextColor="{Binding TaskColorChallenger}"
+                                                       HorizontalOptions="StartAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding currentPoints}"/>
+                                                            <Span Text="/"/>
+                                                            <Span Text="{Binding totalPoints}"/>
+
+                                                        </FormattedString>
+
+                                                    </Label.FormattedText>
+
+                                                </Label>
+
+                                                <!--Porcentaje de progreso-->
+                                                <Label FontSize="12"
+                                                       FontAttributes="Bold"
+                                                       TextColor="{Binding ProgressColorChallenger}"
+                                                       HorizontalOptions="End">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding PercentChallenge}"/>
+                                                            <Span Text="%"/>
+
+                                                        </FormattedString>
+
+                                                    </Label.FormattedText>
+
+                                                </Label>
+
+                                            </StackLayout>
+
+                                            <!--Barra-->
+
+                                            <ProgressBar Margin="0,8,0,0"
+                                                         ProgressColor="{Binding BarColorChallenger}"
+                                                         Progress="{Binding BarProgressChallenge}"/>
+
+
+                                        </StackLayout>
+                                    </Frame>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer   
+                                                            Command="{Binding BindingContext.OpenChallengeCommand, Source={x:Reference ChallengesPageView}}"
+                                                            CommandParameter="{Binding .}" />
+
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
